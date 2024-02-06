@@ -1,4 +1,5 @@
 import 'package:firebase_test/firebasedb.dart';
+import 'package:firebase_test/homepage.dart';
 import 'package:firebase_test/loginpage.dart';
 import 'package:flutter/material.dart';
 
@@ -58,11 +59,11 @@ class _LoginPageState extends State<Signup> {
           SizedBox(
             height: 10,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsets.only(right: 10),
+                padding: EdgeInsets.only(right: 10),
                 child: Text('forgot password'),
               ),
             ],
@@ -72,11 +73,11 @@ class _LoginPageState extends State<Signup> {
           ),
           ElevatedButton(
               onPressed: () {
-                String mail = email_controller.text.trim();
+                String email = email_controller.text.trim();
                 String pwd = password_controller.text.trim();
 
                 FirebaseHelper()
-                    .signUp(email: mail, password: pwd)
+                    .signUp(email: email, password: pwd)
                     .then((result) {
                   if (result == null) {
                     Navigator.of(context).push(
@@ -103,7 +104,7 @@ class _LoginPageState extends State<Signup> {
                   onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LoginPage(),
+                        builder: (context) => HomePage(),
                       )),
                   child: const Text(
                     'Login now',
